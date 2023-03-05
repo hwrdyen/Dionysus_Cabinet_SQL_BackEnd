@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5050;
 
@@ -6,6 +7,11 @@ const alcohol_list_Routes = require('./routes/alcohol_list_Routes');
 const cocktail_recipes_Routes = require('./routes/cocktail_recipes_Routes');
 const represent_mood_list_Routes = require('./routes/represent_mood_list_Routes');
 const taste_preferences_list_Routes = require('./routes/taste_preferences_list_Routes');
+
+//middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
 
 // home route:  we can safely delete this
 app.get("/", (req, res) => {
